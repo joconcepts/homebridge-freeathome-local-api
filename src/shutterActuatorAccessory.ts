@@ -149,6 +149,13 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
           );
         }
 
+        this.doUpdateDatapoint(
+          "Shutter Actuator",
+          this.service,
+          this.platform.Characteristic.PositionState,
+          this.statePositionState
+        );
+
         return;
       case "odp0003":
         this.stateObstructed = !!parseInt(value);
