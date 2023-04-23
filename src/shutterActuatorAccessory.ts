@@ -133,7 +133,7 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
       case "odp0001":
         this.stateCurrentPosition = 100 - parseInt(value);
 
-        if this.statePositionState == 0 {
+        if this.statePositionState == this.platform.Characteristic.PositionState.STOPPED {
           this.stateTargetPosition = 100 - parseInt(value);
           this.doUpdateDatapoint(
             "Shutter Actuator",
