@@ -159,6 +159,12 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
           this.stateObstructed
         );
         return;
+      case "idp0002":
+        this.platform.log.info(
+          `${this.accessory.displayName} (Shutter Actuator ${
+            this.serialNumber
+          }) idp0002 -> ${value.toString()}`
+        );
       default:
         return;
     }
