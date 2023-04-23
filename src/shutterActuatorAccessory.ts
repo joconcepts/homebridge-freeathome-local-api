@@ -132,12 +132,6 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
         return;
       case "odp0001":
         this.stateCurrentPosition = 100 - parseInt(value);
-        this.doUpdateDatapoint(
-          "Shutter Actuator",
-          this.service,
-          this.platform.Characteristic.CurrentPosition,
-          this.stateCurrentPosition
-        );
 
         if this.statePositionState == 0 {
           this.stateTargetPosition = 100 - parseInt(value);
@@ -152,8 +146,8 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
         this.doUpdateDatapoint(
           "Shutter Actuator",
           this.service,
-          this.platform.Characteristic.PositionState,
-          this.statePositionState
+          this.platform.Characteristic.CurrentPosition,
+          this.stateCurrentPosition
         );
 
         return;
@@ -166,12 +160,6 @@ export class ShutterActuatorAccessory extends FreeAtHomeAccessory {
           this.stateObstructed
         );
         return;
-      case "idp0002":
-        this.platform.log.info(
-          `${this.accessory.displayName} (Shutter Actuator ${
-            this.serialNumber
-          }) idp0002 -> ${value.toString()}`
-        );
       default:
         return;
     }
